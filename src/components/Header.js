@@ -15,12 +15,10 @@ export default Header;
 const headerStyles = StyleSheet.create({
   headerContainer: {
     borderBottomWidth: 1,
-    position: "absolute",
-    top: 0,
+    marginBottom: "auto",
     width: Dimensions.get("window").width,
     height: 100,
     backgroundColor: genericStyles.colors.cream,
-    flex: 1,
     justifyContent: "flex-end",
     alignItems: "center",
   },
