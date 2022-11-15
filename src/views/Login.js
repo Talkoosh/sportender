@@ -1,13 +1,32 @@
-import { View, Text, TextInput, StyleSheet, Dimensions, TouchableOpacity, Image } from "react-native";
-import React from "react";
+import { View, Text, TextInput, StyleSheet, Dimensions, TouchableOpacity, Image, NavigatorIOS } from "react-native";
+import React, { useState } from "react";
 import genericStyles from "../style/generic";
 
-const Login = () => {
+const Login = ({ navigation }) => {
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+
+  const onCredentialsInput = (type, val) => {
+    switch (type) {
+      case "email":
+        setEmail(val);
+        break;
+      case "password":
+        setPassword(val);
+        break;
+    }
+  };
+
   return (
     <View style={[loginStyle.container, genericStyles.pageContainer]}>
       <Text style={[loginStyle.text, loginStyle.heading]}>התחברות</Text>
       <View style={loginStyle.inputContainer}>
-        <TextInput style={[loginStyle.input, loginStyle.text]}></TextInput>
+        <TextInput
+          style={[loginStyle.input, loginStyle.text]}
+          onChangeText={(val) => {
+            onCredentialsInput("email", val);
+          }}
+        ></TextInput>
         <TextInput secureTextEntry={true} style={loginStyle.input}></TextInput>
       </View>
       <View style={loginStyle.btnsContainer}>
@@ -21,6 +40,7 @@ const Login = () => {
         <TouchableOpacity
           onPress={() => {
             console.log("signup");
+            navigation.navigate("Signup");
           }}
         >
           <Text style={[loginStyle.text, loginStyle.loginBtn, { backgroundColor: genericStyles.colors.cream }]}>הירשם</Text>

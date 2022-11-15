@@ -19,9 +19,7 @@ const Map = () => {
         style={mapStyles.map}
         provider={PROVIDER_GOOGLE}
       >
-        <TouchableOpacity>
-          <Marker key={0} coordinate={marker.latlng} title={marker.title} />
-        </TouchableOpacity>
+        <TouchableOpacity></TouchableOpacity>
       </MapView>
     </View>
   );
